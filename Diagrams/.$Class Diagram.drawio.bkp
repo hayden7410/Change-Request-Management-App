@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" modified="2026-05-11T18:05:19.385238+00:00" agent="ChatGPT" version="24.7.17" type="device">
+  <diagram id="domain-class-diagram" name="Domain Class Diagram">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="note3" value="Domain / analysis class diagram&lt;br&gt;Focus: business objects and relationships. No controllers/services here." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="300" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="class4" value="&lt;div&gt;&lt;b&gt;User&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;userId: Long&lt;br&gt;fullName: String&lt;br&gt;email: String&lt;br&gt;passwordHash: String&lt;br&gt;isActive: Boolean&lt;br&gt;createdAt: DateTime&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="80" y="170" width="220" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="class5" value="&lt;div&gt;&lt;b&gt;Role&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;roleId: Long&lt;br&gt;roleName: String&lt;br&gt;description: String&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="360" y="170" width="190" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="class6" value="&lt;div&gt;&lt;b&gt;Permission&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;permissionId: Long&lt;br&gt;permissionName: String&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="360" y="350" width="190" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="class7" value="&lt;div&gt;&lt;b&gt;Department&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;departmentId: Long&lt;br&gt;departmentName: String&lt;br&gt;description: String&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="80" y="430" width="220" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="class8" value="&lt;div&gt;&lt;b&gt;ChangeRequest&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;requestId: Long&lt;br&gt;title: String&lt;br&gt;description: Text&lt;br&gt;businessProblem: Text&lt;br&gt;impactedSystem: String&lt;br&gt;requestedOutcome: Text&lt;br&gt;urgency: UrgencyLevel&lt;br&gt;priority: PriorityLevel&lt;br&gt;status: RequestStatus&lt;br&gt;createdAt: DateTime&lt;br&gt;updatedAt: DateTime&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="680" y="220" width="270" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="class9" value="&lt;div&gt;&lt;b&gt;AISummary&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;summaryId: Long&lt;br&gt;businessProblemSummary: Text&lt;br&gt;impactedSystemSummary: Text&lt;br&gt;urgencySummary: Text&lt;br&gt;requestedOutcomeSummary: Text&lt;br&gt;approved: Boolean&lt;br&gt;createdAt: DateTime&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="130" width="250" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="class10" value="&lt;div&gt;&lt;b&gt;Comment&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;commentId: Long&lt;br&gt;content: Text&lt;br&gt;createdAt: DateTime&lt;br&gt;updatedAt: DateTime&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="380" width="250" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="class11" value="&lt;div&gt;&lt;b&gt;Attachment&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;attachmentId: Long&lt;br&gt;fileName: String&lt;br&gt;fileType: String&lt;br&gt;fileUrl: String&lt;br&gt;uploadedAt: DateTime&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="580" width="250" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="class12" value="&lt;div&gt;&lt;b&gt;StatusHistory&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;historyId: Long&lt;br&gt;oldStatus: RequestStatus&lt;br&gt;newStatus: RequestStatus&lt;br&gt;changedAt: DateTime&lt;br&gt;changeReason: String&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="680" y="620" width="270" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="class13" value="&lt;div&gt;&lt;b&gt;ApprovalDecision&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;decisionId: Long&lt;br&gt;decision: DecisionType&lt;br&gt;reason: String&lt;br&gt;decidedAt: DateTime&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="360" y="650" width="240" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="class14" value="&lt;div&gt;&lt;b&gt;Notification&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;notificationId: Long&lt;br&gt;message: String&lt;br&gt;isRead: Boolean&lt;br&gt;createdAt: DateTime&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="80" y="670" width="220" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge15" value="* users&lt;br&gt;1 role" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class4" target="class5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge16" value="* roles&lt;br&gt;* permissions" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class5" target="class6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge17" value="* users&lt;br&gt;1 department" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class4" target="class7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge18" value="1 submitter&lt;br&gt;0..* requests" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class4" target="class8">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge19" value="1 assigned dept&lt;br&gt;0..* requests" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class7" target="class8">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge20" value="1 request&lt;br&gt;0..1 approved summary" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class8" target="class9">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge21" value="1 request&lt;br&gt;0..* comments" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class8" target="class10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge22" value="1 author&lt;br&gt;0..* comments" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class4" target="class10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge23" value="1 request&lt;br&gt;0..* attachments" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class8" target="class11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge24" value="1 uploader&lt;br&gt;0..* uploads" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class4" target="class11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge25" value="1 request&lt;br&gt;0..* status records" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class8" target="class12">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge26" value="1 changedBy&lt;br&gt;0..* changes" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class4" target="class12">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge27" value="1 request&lt;br&gt;0..* decisions" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class8" target="class13">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge28" value="1 approver&lt;br&gt;0..* decisions" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class4" target="class13">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge29" value="1 recipient&lt;br&gt;0..* notifications" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class4" target="class14">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge30" value="0..1 related request&lt;br&gt;0..* notifications" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class8" target="class14">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="design-class-diagram" name="Design Class Diagram">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="note3" value="Design class diagram&lt;br&gt;Focus: Spring Boot + REST API implementation structure.&lt;br&gt;Controllers receive HTTP requests; services enforce business rules; repositories access PostgreSQL; clients call external AI APIs." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="400" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="class4" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Controller&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;AuthController&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;/api/auth&lt;br&gt;&lt;hr size=&quot;1&quot;&gt;login(request): LoginResponse&lt;br&gt;register(request): UserResponse&lt;br&gt;getCurrentUser(): CurrentUserResponse&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="80" y="190" width="260" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="class5" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Controller&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;ChangeRequestController&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;/api/change-requests&lt;br&gt;&lt;hr size=&quot;1&quot;&gt;create(request): ChangeRequestResponse&lt;br&gt;findAll(filters): List&amp;lt;ChangeRequestListItem&amp;gt;&lt;br&gt;findById(id): ChangeRequestDetailResponse&lt;br&gt;updateStatus(id, request): ChangeRequestResponse&lt;br&gt;route(id, request): ChangeRequestResponse&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="80" y="410" width="260" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="class6" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Controller&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;AISummaryController&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;/api/ai&lt;br&gt;&lt;hr size=&quot;1&quot;&gt;generateSummary(request): AISummaryResponse&lt;br&gt;approveSummary(id, request): AISummaryResponse&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="80" y="680" width="260" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="class7" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Controller&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;CommentController&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;/api/change-requests/{id}/comments&lt;br&gt;&lt;hr size=&quot;1&quot;&gt;addComment(id, request): CommentResponse&lt;br&gt;getComments(id): List&amp;lt;CommentResponse&amp;gt;&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="80" y="890" width="260" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="class8" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Controller&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;AdminController&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;/api/admin&lt;br&gt;&lt;hr size=&quot;1&quot;&gt;assignRole(userId, request): UserResponse&lt;br&gt;createDepartment(request): DepartmentResponse&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1100" width="260" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="class9" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;AuthService&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;authenticate(email, password): LoginResponse&lt;br&gt;registerUser(request): User&lt;br&gt;getCurrentUser(): User&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="460" y="190" width="280" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="class10" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;JwtService&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;generateToken(user): String&lt;br&gt;validateToken(token): Boolean&lt;br&gt;extractUserId(token): Long&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="800" y="190" width="250" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="class11" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;ChangeRequestService&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;createRequest(request, userId): ChangeRequest&lt;br&gt;findVisibleRequests(userId, filters): List&amp;lt;ChangeRequest&amp;gt;&lt;br&gt;getRequestDetail(id, userId): ChangeRequest&lt;br&gt;updateStatus(id, request, userId): ChangeRequest&lt;br&gt;routeRequest(id, request, userId): ChangeRequest&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="460" y="430" width="300" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="class12" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;AISummaryService&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;generateSummary(request): AISummaryDraft&lt;br&gt;approveSummary(requestId, summary, userId): AISummary&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="460" y="720" width="300" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="class13" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;CommentService&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;addComment(requestId, request, userId): Comment&lt;br&gt;getComments(requestId, userId): List&amp;lt;Comment&amp;gt;&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="460" y="950" width="280" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="class14" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;AdminService&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;assignRole(userId, roleId): User&lt;br&gt;createDepartment(request): Department&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="460" y="1160" width="280" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="class15" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;PermissionService&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;canView(user, request): Boolean&lt;br&gt;canEdit(user, request): Boolean&lt;br&gt;canApprove(user, request): Boolean&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="840" y="430" width="270" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="class16" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;RoutingService&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;determineDepartment(request): Department&lt;br&gt;assignDepartment(request, department): void&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="840" y="620" width="270" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="class17" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;WorkflowService&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;validateTransition(oldStatus, newStatus): void&lt;br&gt;applyStatusChange(request, newStatus, user): void&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="840" y="810" width="270" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="class18" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;StatusHistoryService&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;recordStatusChange(request, oldStatus, newStatus, user): StatusHistory&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="840" y="1010" width="270" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="class19" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;NotificationService&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;notifyReviewer(request): void&lt;br&gt;notifyRequester(request): void&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="840" y="1190" width="270" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="class20" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Client&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;AIProviderClient&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;callSummaryAPI(prompt): String&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="840" y="720" width="270" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="class21" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Helper&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;AISummaryPromptBuilder&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;buildPrompt(content): String&lt;br&gt;parseResponse(response): AISummaryDraft&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="720" width="270" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="class22" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Repository&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;UserRepository&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;findByEmail(email): Optional&amp;lt;User&amp;gt;&lt;br&gt;findById(id): Optional&amp;lt;User&amp;gt;&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="190" width="250" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="class23" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Repository&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;RoleRepository&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;findByName(name): Optional&amp;lt;Role&amp;gt;&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1530" y="190" width="240" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="class24" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Repository&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;DepartmentRepository&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;findById(id): Optional&amp;lt;Department&amp;gt;&lt;br&gt;findByName(name): Optional&amp;lt;Department&amp;gt;&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1530" y="340" width="240" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="class25" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Repository&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;ChangeRequestRepository&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;save(request): ChangeRequest&lt;br&gt;findById(id): Optional&amp;lt;ChangeRequest&amp;gt;&lt;br&gt;findBySubmittedById(userId): List&amp;lt;ChangeRequest&amp;gt;&lt;br&gt;findByAssignedDepartmentId(deptId): List&amp;lt;ChangeRequest&amp;gt;&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="500" width="280" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="class26" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Repository&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;AISummaryRepository&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;save(summary): AISummary&lt;br&gt;findByRequestId(id): Optional&amp;lt;AISummary&amp;gt;&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="710" width="250" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="class27" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Repository&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;CommentRepository&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;save(comment): Comment&lt;br&gt;findByRequestId(id): List&amp;lt;Comment&amp;gt;&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="870" width="250" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="class28" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Repository&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;StatusHistoryRepository&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;save(history): StatusHistory&lt;br&gt;findByRequestId(id): List&amp;lt;StatusHistory&amp;gt;&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="1040" width="260" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="class29" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Repository&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;NotificationRepository&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;save(notification): Notification&lt;br&gt;findByRecipientId(userId): List&amp;lt;Notification&amp;gt;&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="1200" width="260" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="class30" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Entity&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;User&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;id: Long&lt;br&gt;fullName: String&lt;br&gt;email: String&lt;br&gt;passwordHash: String&lt;br&gt;isActive: Boolean&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1840" y="110" width="250" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="class31" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Entity&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Role&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;id: Long&lt;br&gt;roleName: String&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1840" y="300" width="250" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="class32" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Entity&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Department&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;id: Long&lt;br&gt;departmentName: String&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1840" y="450" width="250" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="class33" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Entity&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;ChangeRequest&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;id: Long&lt;br&gt;title: String&lt;br&gt;description: Text&lt;br&gt;impactedSystem: String&lt;br&gt;urgency: UrgencyLevel&lt;br&gt;priority: PriorityLevel&lt;br&gt;status: RequestStatus&lt;br&gt;createdAt: DateTime&lt;br&gt;&lt;hr size=&quot;1&quot;&gt;updateStatus(status): void&lt;br&gt;assignDepartment(dept): void&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1840" y="610" width="270" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="class34" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Entity&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;AISummary&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;id: Long&lt;br&gt;businessProblemSummary: Text&lt;br&gt;impactedSystemSummary: Text&lt;br&gt;requestedOutcomeSummary: Text&lt;br&gt;approved: Boolean&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1840" y="870" width="270" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="class35" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Entity&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Comment&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;id: Long&lt;br&gt;content: Text&lt;br&gt;createdAt: DateTime&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1840" y="1070" width="250" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="class36" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;Entity&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;StatusHistory&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;id: Long&lt;br&gt;oldStatus: RequestStatus&lt;br&gt;newStatus: RequestStatus&lt;br&gt;changedAt: DateTime&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1840" y="1230" width="250" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="class37" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;DTO&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;CreateChangeRequestRequest&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;title: String&lt;br&gt;description: String&lt;br&gt;impactedSystem: String&lt;br&gt;urgency: String&lt;br&gt;departmentId: Long&lt;br&gt;aiSummary: AISummaryDTO&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="460" y="40" width="260" height="115" as="geometry"/>
+        </mxCell>
+        <mxCell id="class38" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;DTO&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;ChangeRequestResponse&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;id: Long&lt;br&gt;title: String&lt;br&gt;status: String&lt;br&gt;departmentName: String&lt;br&gt;summary: AISummaryDTO&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="760" y="40" width="260" height="115" as="geometry"/>
+        </mxCell>
+        <mxCell id="class39" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;DTO&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;GenerateSummaryRequest&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;title: String&lt;br&gt;description: String&lt;br&gt;impactedSystem: String&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="40" width="250" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="class40" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;DTO&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;AISummaryResponse&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;businessProblem: String&lt;br&gt;urgency: String&lt;br&gt;requestedOutcome: String&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="40" width="250" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="class41" value="&lt;div style=&quot;font-size:10px;color:#666666;&quot;&gt;&amp;lt;&amp;lt;DTO&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;LoginRequest / LoginResponse&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;email: String&lt;br&gt;password: String&lt;br&gt;token: String&lt;br&gt;role: String&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;fontSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1630" y="40" width="250" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge42" value="uses" style="endArrow=open;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class4" target="class9">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge43" value="uses" style="endArrow=open;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class5" target="class11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge44" value="uses" style="endArrow=open;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class6" target="class12">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge45" value="uses" style="endArrow=open;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class7" target="class13">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge46" value="uses" style="endArrow=open;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class8" target="class14">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge47" value="uses" style="endArrow=open;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class9" target="class10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge48" value="uses" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class9" target="class22">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge49" value="uses" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class9" target="class23">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge50" value="checks visibility" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class11" target="class15">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge51" value="routes" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class11" target="class16">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge52" value="status rules" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class11" target="class17">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge53" value="records changes" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class11" target="class18">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge54" value="notifies" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class11" target="class19">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge55" value="persists" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class11" target="class25">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge56" value="finds department" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class11" target="class24">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge57" value="calls" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class12" target="class20">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge58" value="builds/parses" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class12" target="class21">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge59" value="persists approved summary" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class12" target="class26">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge60" value="checks view access" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class13" target="class15">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge61" value="persists" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class13" target="class27">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge62" value="loads request" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class13" target="class25">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge63" value="updates user" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class14" target="class22">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge64" value="loads role" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class14" target="class23">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge65" value="manages department" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class14" target="class24">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge66" value="saves" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class18" target="class28">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge67" value="saves" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class19" target="class29">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge68" value="manages" style="endArrow=open;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class22" target="class30">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge69" value="manages" style="endArrow=open;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class23" target="class31">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge70" value="manages" style="endArrow=open;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class24" target="class32">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge71" value="manages" style="endArrow=open;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class25" target="class33">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge72" value="manages" style="endArrow=open;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class26" target="class34">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge73" value="manages" style="endArrow=open;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class27" target="class35">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge74" value="manages" style="endArrow=open;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class28" target="class36">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge75" value="* users&lt;br&gt;* roles" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class30" target="class31">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge76" value="* users&lt;br&gt;1 dept" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class30" target="class32">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge77" value="1 submitter&lt;br&gt;0..* requests" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class30" target="class33">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge78" value="1 assigned dept&lt;br&gt;0..* requests" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class32" target="class33">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge79" value="1&lt;br&gt;0..1" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class33" target="class34">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge80" value="1&lt;br&gt;0..*" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class33" target="class35">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge81" value="1&lt;br&gt;0..*" style="endArrow=open;html=1;rounded=0;orthogonalLoop=1;jettySize=auto;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class33" target="class36">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge82" value="request body" style="endArrow=open;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class37" target="class5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge83" value="returns" style="endArrow=open;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class5" target="class38">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge84" value="request body" style="endArrow=open;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class39" target="class6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge85" value="returns" style="endArrow=open;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class6" target="class40">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge86" value="login data" style="endArrow=open;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="class41" target="class4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

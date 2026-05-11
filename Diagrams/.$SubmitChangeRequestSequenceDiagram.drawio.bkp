@@ -1,0 +1,144 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.6 Chrome/140.0.7339.249 Electron/38.8.0 Safari/537.36" version="29.3.6">
+  <diagram name="Page-1" id="InqzUCs4MadRPd4-2etM">
+    <mxGraphModel dx="1389" dy="1980" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="HQj-wivTUphc3WauCyuZ-1" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" value="" vertex="1">
+          <mxGeometry height="400" width="20" x="50" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-2" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value=":ViewLayer" vertex="1">
+          <mxGeometry height="700" width="100" x="180" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-5" parent="HQj-wivTUphc3WauCyuZ-2" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="80" width="10" x="45" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-8" parent="HQj-wivTUphc3WauCyuZ-2" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="460" width="10" x="45" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-3" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value=":Change&lt;br&gt;ReqController" vertex="1">
+          <mxGeometry height="720" width="100" x="440" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-13" parent="HQj-wivTUphc3WauCyuZ-3" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="420" width="10" x="45" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-4" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value=":AIAPI" vertex="1">
+          <mxGeometry height="400" width="100" x="610" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-14" parent="HQj-wivTUphc3WauCyuZ-4" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="80" width="10" x="45" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-6" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=5;" target="HQj-wivTUphc3WauCyuZ-5" value="request Submission Form">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="155" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-7" edge="1" parent="1" source="HQj-wivTUphc3WauCyuZ-5" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=-5;" value="Submission Form">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="225" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-9" edge="1" parent="1" source="HQj-wivTUphc3WauCyuZ-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=5;" target="HQj-wivTUphc3WauCyuZ-8" value="Submit Change Request Form">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="70" y="295" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-11" edge="1" parent="1" source="HQj-wivTUphc3WauCyuZ-8" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" target="HQj-wivTUphc3WauCyuZ-13" value="submitDraft(title, content, attachment)">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="320" />
+            </Array>
+            <mxPoint x="240" y="320" as="sourcePoint" />
+            <mxPoint x="480" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-15" edge="1" parent="1" source="HQj-wivTUphc3WauCyuZ-13" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=5;" target="HQj-wivTUphc3WauCyuZ-14" value="generateSummary(content)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="345" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-16" edge="1" parent="1" source="HQj-wivTUphc3WauCyuZ-14" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=-5;" target="HQj-wivTUphc3WauCyuZ-13" value="returnSummary">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="415" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-17" edge="1" parent="1" source="HQj-wivTUphc3WauCyuZ-13" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" target="HQj-wivTUphc3WauCyuZ-8" value="returnSummary">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="440" />
+            </Array>
+            <mxPoint x="480" y="430" as="sourcePoint" />
+            <mxPoint x="400" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-20" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" target="HQj-wivTUphc3WauCyuZ-8" value="approveSummary">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="475" as="sourcePoint" />
+            <mxPoint x="220" y="475" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-22" edge="1" parent="1" source="HQj-wivTUphc3WauCyuZ-8" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" target="HQj-wivTUphc3WauCyuZ-13" value="submitFinalRequest(summary)">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="490" />
+            </Array>
+            <mxPoint x="240" y="490" as="sourcePoint" />
+            <mxPoint x="480" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-23" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="aChangeReq:&lt;br&gt;ChangeRequest" vertex="1">
+          <mxGeometry height="170" width="100" x="810" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-25" parent="HQj-wivTUphc3WauCyuZ-23" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="60" width="10" x="45" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-24" edge="1" parent="1" source="HQj-wivTUphc3WauCyuZ-13" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0.118;entryDx=0;entryDy=0;entryPerimeter=0;" target="HQj-wivTUphc3WauCyuZ-23" value="createChangeRequest(title, content, attachment, summary)">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="670" y="500" />
+            </Array>
+            <mxPoint x="500" y="510" as="sourcePoint" />
+            <mxPoint x="770" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-26" edge="1" parent="1" source="HQj-wivTUphc3WauCyuZ-25" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" target="HQj-wivTUphc3WauCyuZ-13" value="aChangeReq">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="670" y="550" />
+            </Array>
+            <mxPoint x="830" y="550" as="sourcePoint" />
+            <mxPoint x="500" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-27" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="ChangeReqDA" vertex="1">
+          <mxGeometry height="740" width="100" x="980" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-30" parent="HQj-wivTUphc3WauCyuZ-27" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="80" width="10" x="45" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-31" edge="1" parent="1" source="HQj-wivTUphc3WauCyuZ-13" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=5;" target="HQj-wivTUphc3WauCyuZ-30" value="writeChangeReqtoDB(aChangeReq)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="615" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-32" edge="1" parent="1" source="HQj-wivTUphc3WauCyuZ-30" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=-5;" target="HQj-wivTUphc3WauCyuZ-13" value="return">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="685" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-33" parent="1" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" value="&lt;strong data-start=&quot;616&quot; data-end=&quot;629&quot;&gt;Scenario:&lt;/strong&gt; A logged-in user opens the change request form, enters request details, asks the system to generate an AI summary, reviews and approves the summary, and the system saves the change request with the approved AI summary." vertex="1">
+          <mxGeometry height="110" width="560" x="690" y="-50" as="geometry" />
+        </mxCell>
+        <mxCell id="HQj-wivTUphc3WauCyuZ-34" edge="1" parent="1" source="HQj-wivTUphc3WauCyuZ-13" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" target="HQj-wivTUphc3WauCyuZ-8" value="displaySuccessMessage()">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="710" />
+            </Array>
+            <mxPoint x="480" y="720" as="sourcePoint" />
+            <mxPoint x="240" y="710" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

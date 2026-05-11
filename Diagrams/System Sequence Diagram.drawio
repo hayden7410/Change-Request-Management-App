@@ -1,0 +1,54 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.6 Chrome/140.0.7339.249 Electron/38.8.0 Safari/537.36" version="29.3.6">
+  <diagram name="Page-1" id="JpUYumjXJQHmbgZ_Q20Y">
+    <mxGraphModel dx="1281" dy="660" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="XrQbUPpqkYiP6G3SQhsp-7" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Change Req Management System" vertex="1">
+          <mxGeometry height="520" width="100" x="310" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="XrQbUPpqkYiP6G3SQhsp-9" parent="XrQbUPpqkYiP6G3SQhsp-7" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="200" width="10" x="45" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="XrQbUPpqkYiP6G3SQhsp-20" parent="XrQbUPpqkYiP6G3SQhsp-7" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="80" width="10" x="45" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="XrQbUPpqkYiP6G3SQhsp-23" parent="XrQbUPpqkYiP6G3SQhsp-7" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="50" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="XrQbUPpqkYiP6G3SQhsp-24" edge="1" parent="XrQbUPpqkYiP6G3SQhsp-7" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" target="XrQbUPpqkYiP6G3SQhsp-23" value="generateSummary">
+          <mxGeometry relative="1" x="0.0118" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="85" y="230" />
+            </Array>
+            <mxPoint x="55" y="200" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XrQbUPpqkYiP6G3SQhsp-8" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" value="" vertex="1">
+          <mxGeometry height="520" width="20" x="70" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="XrQbUPpqkYiP6G3SQhsp-10" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=5;" target="XrQbUPpqkYiP6G3SQhsp-9" value="requestChangeReqForm">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="115" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XrQbUPpqkYiP6G3SQhsp-11" edge="1" parent="1" source="XrQbUPpqkYiP6G3SQhsp-7" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" value="ChangeReqForm">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XrQbUPpqkYiP6G3SQhsp-21" edge="1" parent="1" source="XrQbUPpqkYiP6G3SQhsp-8" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=5;" target="XrQbUPpqkYiP6G3SQhsp-20" value="submitChangeRequest(title, content, attachment)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="245" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XrQbUPpqkYiP6G3SQhsp-22" edge="1" parent="1" source="XrQbUPpqkYiP6G3SQhsp-20" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=-5;" target="XrQbUPpqkYiP6G3SQhsp-8" value="ChangeRequestSaved">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="315" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
