@@ -1,0 +1,65 @@
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+*.env
+
+# Java / Spring Boot
+Backend/target/
+Backend/.mvn/wrapper/maven-wrapper.jar
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# Maven / Gradle
+.mvn/
+.gradle/
+build/
+out/
+
+# Node / Next.js
+Frontend/node_modules/
+Frontend/.next/
+Frontend/out/
+Frontend/dist/
+Frontend/build/
+Frontend/.turbo/
+
+# TypeScript / JavaScript
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE files
+.vscode/settings.json
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Database local files
+*.sqlite
+*.db
+
+# Uploaded files / local file storage
+uploads/
+Backend/uploads/
+Frontend/uploads/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Logs
+logs/
+*.log
+AGENTS.md
+7_day_implementation_plan.md
