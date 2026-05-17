@@ -6,7 +6,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.Collection;
 import java.util.List;
-
+import java.util.Optional;
 import com.hayden.changerequest.entity.Role;
 
 
@@ -21,4 +21,5 @@ public interface RoleRepository extends JpaRepository<Role, Long> {
     Optional<Role> findByIdWithPermissions(@Param("id") Long id);
     boolean existsByName(String name); 
     List<Role> findByNameIn(Collection<String> names);
+    Optional<Role> findByName(String name);
 }

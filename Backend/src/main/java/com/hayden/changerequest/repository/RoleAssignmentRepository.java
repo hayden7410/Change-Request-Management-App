@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.hayden.changerequest.entity.RoleAssignment;
 
 public interface RoleAssignmentRepository extends JpaRepository<RoleAssignment, Long> {
+    boolean existsByUserIdAndRoleId(Long userId, Long roleId);
 }
