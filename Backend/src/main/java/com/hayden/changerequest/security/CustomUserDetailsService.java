@@ -1,7 +1,9 @@
 package com.hayden.changerequest.security;
 
-import java.util.List;
+import java.util.HashSet;
 
+import java.util.Set;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,6 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.hayden.changerequest.entity.RoleAssignment;
 import com.hayden.changerequest.entity.User;
 import com.hayden.changerequest.repository.UserRepository;
+import com.hayden.changerequest.entity.Role;
+
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
@@ -34,20 +38,39 @@ public class CustomUserDetailsService implements UserDetailsService {
                         )
                 );
 
-        List<SimpleGrantedAuthority> authorities =
-                user.getRoleAssignments()
-                        .stream()
-                        .filter(RoleAssignment::isActive)
-                        .map(roleAssignment ->
-                                roleAssignment.getRole().getName()
-                        )
-                        .map(roleName ->
+        Set<GrantedAuthority> authorities = new HashSet<>();
+
+        for (RoleAssignment roleAssignment : user.getRoleAssignments()) {
+
+            if (!roleAssignment.isActive()) {
+                continue;
+            }
+
+            Role role = roleAssignment.getRole();
+
+            // Add the role.
+            authorities.add(
+                    new SimpleGrantedAuthority(
+                            "ROLE_" + role.getName()
+                    )
+            );
+
+            // Add every permission belonging to the role.
+            role.getRolePermissions()
+                    .forEach(rolePermission -> {
+
+                        String permissionName =
+                                rolePermission
+                                        .getPermission()
+                                        .getName();
+
+                        authorities.add(
                                 new SimpleGrantedAuthority(
-                                        "ROLE_" + roleName
+                                        permissionName
                                 )
-                        )
-                        .distinct()
-                        .toList();
+                        );
+                    });
+        }
 
         return org.springframework.security.core.userdetails.User
                 .withUsername(user.getEmail())

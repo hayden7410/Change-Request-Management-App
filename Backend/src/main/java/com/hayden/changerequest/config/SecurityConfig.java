@@ -9,11 +9,14 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 //Adding JWT authentication filter
 import com.hayden.changerequest.security.JWTAuthenticationFilter;
-
+//Adding method level authorization
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import jakarta.servlet.http.HttpServletResponse;
-
+//Adding error-dispatch rule
+import jakarta.servlet.DispatcherType;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 @Configuration
+@EnableMethodSecurity
 public class SecurityConfig {
     private final JWTAuthenticationFilter jwtAuthenticationFilter;
 
@@ -30,6 +33,7 @@ public SecurityConfig(
         .formLogin(form -> form.disable())
         .httpBasic(httpBasic -> httpBasic.disable())
         .authorizeHttpRequests(auth -> auth
+            .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
             .requestMatchers("/api/health","/api/auth/login").permitAll()
             .requestMatchers("/api/admin/**").hasRole("SYSTEM_ADMIN")
             .requestMatchers("/api/change-requests/**").authenticated()
