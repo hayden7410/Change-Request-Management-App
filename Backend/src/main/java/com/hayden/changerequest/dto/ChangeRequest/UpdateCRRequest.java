@@ -1,13 +1,13 @@
 package com.hayden.changerequest.dto.ChangeRequest;
 
+import com.hayden.changerequest.common.enums.CreateCRAction;
 import com.hayden.changerequest.common.enums.UrgencyLevel;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import com.hayden.changerequest.common.enums.CreateCRAction;
 
-public record CreateCRRequest(
+public record UpdateCRRequest(
 
         @NotBlank(message = "Title is required")
         @Size(
@@ -26,7 +26,7 @@ public record CreateCRRequest(
 
         @NotNull(message = "Assigned department is required")
         Long assignedDepartmentId,
-        
+
         @NotNull(message = "Action is required")
         CreateCRAction action
 

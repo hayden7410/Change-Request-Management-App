@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.security.access.AccessDeniedException;
 
 import com.hayden.changerequest.dto.ChangeRequest.CRResponse;
 import com.hayden.changerequest.dto.ChangeRequest.CreateCRRequest;
@@ -14,6 +15,15 @@ import com.hayden.changerequest.entity.User;
 import com.hayden.changerequest.repository.ChangeRequestRepository;
 import com.hayden.changerequest.repository.DepartmentRepository;
 import com.hayden.changerequest.repository.UserRepository;
+import com.hayden.changerequest.common.exception.ResourceNotFoundException;
+import com.hayden.changerequest.common.enums.ChangeRequestStatus;
+import com.hayden.changerequest.common.enums.CreateCRAction;
+import com.hayden.changerequest.dto.ChangeRequest.UpdateCRRequest;
+import com.hayden.changerequest.common.exception.InvalidRequestStateException;
+
+import org.springframework.security.core.Authentication;
+
+
 
 @Service
 public class ChangeRequestService {
@@ -64,20 +74,147 @@ public class ChangeRequestService {
         changeRequest.setUrgency(request.urgency());
         changeRequest.setSubmittedBy(submittedBy);
         changeRequest.setAssignedDepartment(department);
+        if (request.action() == CreateCRAction.SUBMIT) {
+        changeRequest.setStatus(ChangeRequestStatus.SUBMITTED);
+}
 
         ChangeRequest saved =
                 changeRequestRepository.save(changeRequest);
 
         return toResponse(saved);
     }
-    @Transactional(readOnly = true)
-    @PreAuthorize("hasAuthority('VIEW_SUBMITTED_REQUESTS')")
-    public List<CRResponse> getSubmittedRequests(String submittedByEmail){
-        return changeRequestRepository.findBySubmittedBy_EmailOrderByCreatedAtDesc(submittedByEmail)
-        .stream()
-        .map(this::toResponse)
-        .toList();
+   @Transactional(readOnly = true)
+   @PreAuthorize("hasAuthority('VIEW_SUBMITTED_REQUESTS')")
+   public List<CRResponse> getMyRequests(
+        String submittedByEmail,
+        ChangeRequestStatus status) {
+
+    List<ChangeRequest> requests;
+
+    if (status == null) {
+        requests =
+                changeRequestRepository
+                        .findBySubmittedBy_EmailOrderByCreatedAtDesc(
+                                submittedByEmail
+                        );
+    } else {
+        requests =
+                changeRequestRepository
+                        .findBySubmittedBy_EmailAndStatusOrderByCreatedAtDesc(
+                                submittedByEmail,
+                                status
+                        );
     }
+
+    return requests.stream()
+            .map(this::toResponse)
+            .toList();
+    }
+    @Transactional(readOnly = true)
+    @PreAuthorize(
+        "hasAnyAuthority('VIEW_SUBMITTED_REQUESTS', 'VIEW_ALL_REQUESTS')"
+)
+    public CRResponse getById(
+        Long requestId,
+        Authentication authentication) {
+
+    ChangeRequest changeRequest = changeRequestRepository
+            .findById(requestId)
+            .orElseThrow(() ->
+                    new ResourceNotFoundException(
+                            "Change request was not found"
+                    )
+            );
+
+    String currentUserEmail = authentication.getName();
+
+    boolean isOwner = changeRequest
+            .getSubmittedBy()
+            .getEmail()
+            .equals(currentUserEmail);
+
+    boolean canViewAllRequests = authentication
+            .getAuthorities()
+            .stream()
+            .anyMatch(authority ->
+                    authority.getAuthority()
+                            .equals("VIEW_ALL_REQUESTS")
+            );
+
+    boolean isDraft =
+            changeRequest.getStatus() == ChangeRequestStatus.DRAFT;
+
+    if (isDraft && !isOwner) {
+        throw new AccessDeniedException(
+                "Draft requests are visible only to their owner"
+        );
+    }
+
+    if (!isOwner && !canViewAllRequests) {
+        throw new AccessDeniedException(
+                "You do not have access to this change request"
+        );
+    }
+
+    return toResponse(changeRequest);
+}
+    @Transactional
+    @PreAuthorize("hasAuthority('EDIT_CHANGE_REQUEST')")
+        public CRResponse updateDraft(
+        Long requestId,
+        UpdateCRRequest request,
+        String currentUserEmail) {
+
+    ChangeRequest changeRequest = changeRequestRepository
+            .findById(requestId)
+            .orElseThrow(() ->
+                    new ResourceNotFoundException(
+                            "Change request was not found"
+                    )
+            );
+
+    boolean isOwner = changeRequest
+            .getSubmittedBy()
+            .getEmail()
+            .equals(currentUserEmail);
+
+    if (!isOwner) {
+        throw new AccessDeniedException(
+                "You cannot edit another user's change request"
+        );
+    }
+
+    if (changeRequest.getStatus() != ChangeRequestStatus.DRAFT) {
+        throw new InvalidRequestStateException(
+                "Only draft change requests can be edited"
+        );
+    }
+
+    Department department = departmentRepository
+            .findById(request.assignedDepartmentId())
+            .orElseThrow(() ->
+                    new ResourceNotFoundException(
+                            "Assigned department was not found"
+                    )
+            );
+
+    changeRequest.setTitle(request.title());
+    changeRequest.setDescription(request.description());
+    changeRequest.setBusinessJustification(
+            request.businessJustification()
+    );
+    changeRequest.setUrgency(request.urgency());
+    changeRequest.setAssignedDepartment(department);
+
+    if (request.action() == CreateCRAction.SUBMIT) {
+        changeRequest.setStatus(ChangeRequestStatus.SUBMITTED);
+    }
+
+    ChangeRequest saved =
+            changeRequestRepository.save(changeRequest);
+
+    return toResponse(saved);
+}
     private CRResponse toResponse(ChangeRequest changeRequest){
         return new CRResponse(
             changeRequest.getId(),
