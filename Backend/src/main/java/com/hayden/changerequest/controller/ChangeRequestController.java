@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.hayden.changerequest.dto.ChangeRequest.CRResponse;
 import com.hayden.changerequest.dto.ChangeRequest.CreateCRRequest;
 import com.hayden.changerequest.service.ChangeRequestService;
 import com.hayden.changerequest.common.enums.ChangeRequestStatus;
+import com.hayden.changerequest.dto.ChangeRequest.UpdateCRRequest;
 
 import jakarta.validation.Valid;
 
@@ -72,6 +74,22 @@ public ResponseEntity<List<CRResponse>> getMySubmittedRequests(
     CRResponse response = changeRequestService.getById(
             id,
            authentication);
+
+    return ResponseEntity.ok(response);
+}
+@PatchMapping("/{id}")
+public ResponseEntity<CRResponse> updateDraft(
+        @PathVariable Long id,
+        @Valid @RequestBody UpdateCRRequest request,
+        Authentication authentication) {
+
+    String currentUserEmail = authentication.getName();
+
+    CRResponse response = changeRequestService.updateDraft(
+            id,
+            request,
+            currentUserEmail
+    );
 
     return ResponseEntity.ok(response);
 }
