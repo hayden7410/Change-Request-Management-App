@@ -20,6 +20,7 @@ import com.hayden.changerequest.common.enums.ChangeRequestStatus;
 import com.hayden.changerequest.common.enums.CreateCRAction;
 import com.hayden.changerequest.dto.ChangeRequest.UpdateCRRequest;
 import com.hayden.changerequest.common.exception.InvalidRequestStateException;
+import com.hayden.changerequest.dto.ChangeRequest.UpdatePriorityRequest;
 
 import org.springframework.security.core.Authentication;
 
@@ -83,6 +84,7 @@ public class ChangeRequestService {
 
         return toResponse(saved);
     }
+    //View all change requests submitted by the authenticated user. Optionally filtering by status.
    @Transactional(readOnly = true)
    @PreAuthorize("hasAuthority('VIEW_SUBMITTED_REQUESTS')")
    public List<CRResponse> getMyRequests(
@@ -110,6 +112,7 @@ public class ChangeRequestService {
             .map(this::toResponse)
             .toList();
     }
+    //Retrieve a change request by its ID, ensuring that the user has the appropriate permissions to view it. If the request is in draft status, only the owner can view it. If the user is not the owner and does not have the 'VIEW_ALL_REQUESTS' authority, access is denied.
     @Transactional(readOnly = true)
     @PreAuthorize(
         "hasAnyAuthority('VIEW_SUBMITTED_REQUESTS', 'VIEW_ALL_REQUESTS')"
@@ -158,6 +161,7 @@ public class ChangeRequestService {
 
     return toResponse(changeRequest);
 }
+   //Update a draft change request. Only the owner of the request can update it, and only if the request is still in draft status. If the request is submitted, it cannot be edited.
     @Transactional
     @PreAuthorize("hasAuthority('EDIT_CHANGE_REQUEST')")
         public CRResponse updateDraft(
@@ -215,6 +219,99 @@ public class ChangeRequestService {
 
     return toResponse(saved);
 }
+//View all change requests that are not in draft status, regardless of user ownership. Restricted to users with "View all requests" authority.
+        @Transactional(readOnly = true)
+        @PreAuthorize("hasAuthority('VIEW_ALL_REQUESTS')")
+        public List<CRResponse> getReviewQueue() {
+
+        return changeRequestRepository
+                .findByStatusNotOrderByCreatedAtDesc(
+                        ChangeRequestStatus.DRAFT
+                )
+                .stream()
+                .map(this::toResponse)
+                .toList();
+        }
+//Update priority level of the request. Only applicable to authorized roles with "Update request priority" authority. The request must not be in draft.
+        @Transactional
+        @PreAuthorize("hasAuthority('UPDATE_REQUEST_PRIORITY')")
+        public CRResponse updatePriority(Long requestId, UpdatePriorityRequest request) {
+                ChangeRequest changeRequest = changeRequestRepository.findById(requestId)
+                .orElseThrow(() -> new ResourceNotFoundException("Change request was not found"));
+                if(changeRequest.getStatus() == ChangeRequestStatus.DRAFT) {
+                    throw new InvalidRequestStateException("Cannot update priority of a draft change request");
+                }
+                changeRequest.setPriority(request.priority());
+                ChangeRequest saved = changeRequestRepository.save(changeRequest);
+                return toResponse(saved);
+        }
+//Update the status of a change request. Only applicable to authorized roles with "Update request status" authority.
+        @Transactional
+        @PreAuthorize("hasAuthority('UPDATE_REQUEST_STATUS')")
+        public CRResponse updateStatus(
+                Long id,
+                ChangeRequestStatus newStatus) {
+
+        ChangeRequest changeRequest = changeRequestRepository
+                .findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Change request was not found"
+                        )
+                );
+
+        ChangeRequestStatus currentStatus =
+                changeRequest.getStatus();
+
+        if (currentStatus == ChangeRequestStatus.DRAFT) {
+                throw new InvalidRequestStateException(
+                        "A draft request must be submitted before its status can be updated"
+                );
+        }
+
+        if (!isValidStatusTransition(currentStatus, newStatus)) {
+                throw new InvalidRequestStateException(
+                        "Cannot change status from "
+                                + currentStatus
+                                + " to "
+                                + newStatus
+                );
+        }
+
+        changeRequest.setStatus(newStatus);
+
+        ChangeRequest saved =
+                changeRequestRepository.save(changeRequest);
+
+        return toResponse(saved);
+        }
+
+        private boolean isValidStatusTransition(
+                ChangeRequestStatus currentStatus,
+                ChangeRequestStatus newStatus) {
+
+        return switch (currentStatus) {
+
+                case SUBMITTED ->
+                        newStatus == ChangeRequestStatus.UNDER_REVIEW;
+
+                case UNDER_REVIEW ->
+                        newStatus == ChangeRequestStatus.APPROVED
+                                || newStatus == ChangeRequestStatus.REJECTED;
+
+                case APPROVED ->
+                        newStatus == ChangeRequestStatus.IMPLEMENTATION_PENDING;
+
+                case IMPLEMENTATION_PENDING ->
+                        newStatus == ChangeRequestStatus.IMPLEMENTED;
+
+                case IMPLEMENTED ->
+                        newStatus == ChangeRequestStatus.CLOSED;
+
+                case DRAFT, REJECTED, CLOSED -> false;
+        };
+        }
+
     private CRResponse toResponse(ChangeRequest changeRequest){
         return new CRResponse(
             changeRequest.getId(),

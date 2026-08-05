@@ -117,6 +117,7 @@ public class DataInitializer {
                 new RolePermissionSeed("SYSTEM_ADMIN", "MANAGE_ROLES"),
                 new RolePermissionSeed("SYSTEM_ADMIN", "MANAGE_PERMISSIONS"),
                 new RolePermissionSeed("DEVELOPER", "UPDATE_REQUEST_STATUS"),
+                new RolePermissionSeed("DEVELOPER", "CREATE_CHANGE_REQUEST"),
                 new RolePermissionSeed("DEVELOPER", "VIEW_ASSIGNED_REQUESTS"),
                 new RolePermissionSeed("DEVELOPER", "UPLOAD_ATTACHMENT"),
                 new RolePermissionSeed("DEVELOPER", "COMMENT_ON_REQUEST"),

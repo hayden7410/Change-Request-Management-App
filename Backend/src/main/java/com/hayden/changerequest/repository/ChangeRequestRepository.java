@@ -14,4 +14,5 @@ public interface ChangeRequestRepository extends JpaRepository<ChangeRequest, Lo
         String email,
         ChangeRequestStatus status
 );
+List<ChangeRequest> findByStatusNotOrderByCreatedAtDesc(ChangeRequestStatus status);
 }

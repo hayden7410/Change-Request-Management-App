@@ -18,7 +18,8 @@ import com.hayden.changerequest.dto.ChangeRequest.CreateCRRequest;
 import com.hayden.changerequest.service.ChangeRequestService;
 import com.hayden.changerequest.common.enums.ChangeRequestStatus;
 import com.hayden.changerequest.dto.ChangeRequest.UpdateCRRequest;
-
+import com.hayden.changerequest.dto.ChangeRequest.UpdatePriorityRequest;
+import com.hayden.changerequest.dto.ChangeRequest.UpdateStatusRequest;
 import jakarta.validation.Valid;
 
 @RestController
@@ -93,4 +94,28 @@ public ResponseEntity<CRResponse> updateDraft(
 
     return ResponseEntity.ok(response);
 }
+@GetMapping("/review")
+public ResponseEntity<List<CRResponse>> viewReviewQueue() {
+
+    List<CRResponse> responses =
+            changeRequestService.getReviewQueue();
+
+    return ResponseEntity.ok(responses);
 }
+@PatchMapping("/{id}/priority")
+public ResponseEntity<CRResponse> updatePriority(
+        @PathVariable Long id,
+        @Valid @RequestBody UpdatePriorityRequest request) {
+
+    CRResponse response = changeRequestService.updatePriority(id, request);
+
+    return ResponseEntity.ok(response);}
+@PatchMapping("/{id}/status")
+public ResponseEntity<CRResponse> updateStatus(
+        @PathVariable Long id,
+        @Valid @RequestBody UpdateStatusRequest request) {
+
+    CRResponse response = changeRequestService.updateStatus(id, request.status());
+
+    return ResponseEntity.ok(response);
+}}
