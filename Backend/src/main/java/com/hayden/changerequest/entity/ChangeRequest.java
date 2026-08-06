@@ -63,6 +63,16 @@ public class ChangeRequest {
     @Column(nullable = false)
     private Instant updatedAt;
 
+    @ManyToOne
+    @JoinColumn(name = "assigned_developer_id")
+    private User assignedDeveloper;
+
+    @ManyToOne
+    @JoinColumn(name = "assigned_by_user_id")
+    private User assignedBy;
+
+    @Column(name = "assigned_at")
+    private Instant assignedAt;
     public Long getId() {
         return id;
     }
@@ -149,6 +159,30 @@ public class ChangeRequest {
 
     public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
+    }
+    
+    public User getAssignedDeveloper() {
+    return assignedDeveloper;
+}
+
+    public void setAssignedDeveloper(User assignedDeveloper) {
+        this.assignedDeveloper = assignedDeveloper;
+    }
+
+    public User getAssignedBy() {
+        return assignedBy;
+    }
+
+    public void setAssignedBy(User assignedBy) {
+        this.assignedBy = assignedBy;
+    }
+
+    public Instant getAssignedAt() {
+        return assignedAt;
+    }
+
+    public void setAssignedAt(Instant assignedAt) {
+        this.assignedAt = assignedAt;
     }
 
     @PrePersist
