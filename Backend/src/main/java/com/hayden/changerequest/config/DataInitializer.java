@@ -86,6 +86,7 @@ public class DataInitializer {
                 new PermissionSeed("MANAGE_USERS", "Permission to manage user accounts and roles"),
                 new PermissionSeed("MANAGE_ROLES", "Permission to manage roles and their permissions"),
                 new PermissionSeed("MANAGE_PERMISSIONS", "Permission to manage permissions"),
+                new PermissionSeed("ASSIGN_DEVELOPER_TO_REQUEST", "Permission to assign developers to change requests"),
                 new PermissionSeed("UPDATE_REQUEST_PRIORITY", "Permission to update request priority") 
             );
             List<String> permissionNames = permissionsSeed.stream().map(PermissionSeed::name).toList();
@@ -117,7 +118,6 @@ public class DataInitializer {
                 new RolePermissionSeed("SYSTEM_ADMIN", "MANAGE_ROLES"),
                 new RolePermissionSeed("SYSTEM_ADMIN", "MANAGE_PERMISSIONS"),
                 new RolePermissionSeed("DEVELOPER", "UPDATE_REQUEST_STATUS"),
-                new RolePermissionSeed("DEVELOPER", "CREATE_CHANGE_REQUEST"),
                 new RolePermissionSeed("DEVELOPER", "VIEW_ASSIGNED_REQUESTS"),
                 new RolePermissionSeed("DEVELOPER", "UPLOAD_ATTACHMENT"),
                 new RolePermissionSeed("DEVELOPER", "COMMENT_ON_REQUEST"),
@@ -127,7 +127,8 @@ public class DataInitializer {
                 new RolePermissionSeed("PROJECT_MANAGER", "ASSIGN_REQUEST"),
                 new RolePermissionSeed("PROJECT_MANAGER", "APPROVE_REQUEST"),  
                 new RolePermissionSeed("PROJECT_MANAGER", "REJECT_REQUEST"),
-                new RolePermissionSeed("PROJECT_MANAGER", "UPDATE_REQUEST_PRIORITY"),                             
+                new RolePermissionSeed("PROJECT_MANAGER", "UPDATE_REQUEST_PRIORITY"),  
+                new RolePermissionSeed("PROJECT_MANAGER", "ASSIGN_DEVELOPER_TO_REQUEST"),                           
                 new RolePermissionSeed("SOLUTION_ARCHITECT", "VIEW_ALL_REQUESTS"),
                 new RolePermissionSeed("SOLUTION_ARCHITECT", "COMMENT_ON_REQUEST"),
                 new RolePermissionSeed("SOLUTION_ARCHITECT", "APPROVE_REQUEST"),
@@ -135,6 +136,7 @@ public class DataInitializer {
                 new RolePermissionSeed("SOLUTION_ARCHITECT", "GENERATE_AI_SUMMARY"),
                 new RolePermissionSeed("SOLUTION_ARCHITECT", "APPROVE_AI_SUMMARY"),
                 new RolePermissionSeed("SOLUTION_ARCHITECT","UPDATE_REQUEST_PRIORITY"),
+                new RolePermissionSeed("SOLUTION_ARCHITECT", "ASSIGN_DEVELOPER_TO_REQUEST"),
                 new RolePermissionSeed("SOLUTION_ARCHITECT", "UPDATE_REQUEST_STATUS"));
 
                 Set<String> roleRPNames = rolePermissionsSeed.stream()

@@ -28,7 +28,15 @@ public record CRResponse(
 
         String assignedDepartmentName,
 
-        Instant createdAt
+        Instant createdAt,
+
+        Long assignedDeveloperId,
+
+        String assignedDeveloperEmail,
+
+        String assignedByEmail,
+        
+        Instant assignedAt
 
 ) {
 }

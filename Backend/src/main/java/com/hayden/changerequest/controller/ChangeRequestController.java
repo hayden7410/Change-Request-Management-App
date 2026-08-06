@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.hayden.changerequest.dto.Assignment.AssignDeveloperRequest;
 import com.hayden.changerequest.dto.ChangeRequest.CRResponse;
+import com.hayden.changerequest.dto.ChangeRequest.CRStatusHistoryResponse;
 import com.hayden.changerequest.dto.ChangeRequest.CreateCRRequest;
 import com.hayden.changerequest.service.ChangeRequestService;
 import com.hayden.changerequest.common.enums.ChangeRequestStatus;
@@ -113,9 +116,50 @@ public ResponseEntity<CRResponse> updatePriority(
 @PatchMapping("/{id}/status")
 public ResponseEntity<CRResponse> updateStatus(
         @PathVariable Long id,
-        @Valid @RequestBody UpdateStatusRequest request) {
+        @Valid @RequestBody UpdateStatusRequest request,
+        Authentication authentication) {
 
-    CRResponse response = changeRequestService.updateStatus(id, request.status());
+    CRResponse response = changeRequestService.updateStatus(id, request.status(), authentication.getName());
 
     return ResponseEntity.ok(response);
-}}
+}
+@GetMapping("/{id}/history")
+public ResponseEntity<List<CRStatusHistoryResponse>> getStatusHistory(
+        @PathVariable("id") Long id,
+        Authentication authentication) {
+
+    List<CRStatusHistoryResponse> response =
+            changeRequestService.getStatusHistory(
+                    id,
+                    authentication
+            );
+
+    return ResponseEntity.ok(response);
+}
+@GetMapping("/assigned-to-me")
+public ResponseEntity<List<CRResponse>> getMyAssignedRequests(
+        Authentication authentication) {
+
+    List<CRResponse> responses =
+            changeRequestService.getMyAssignedRequests(
+                    authentication.getName()
+            );
+
+    return ResponseEntity.ok(responses);
+}
+@PatchMapping("/{id}/assign-developer")
+public ResponseEntity<CRResponse> assignDeveloper(
+        @PathVariable("id") Long requestId,
+        @Valid @RequestBody AssignDeveloperRequest request,
+        Authentication authentication) {
+
+    CRResponse response =
+            changeRequestService.assignDeveloper(
+                    requestId,
+                    request,
+                    authentication
+            );
+
+    return ResponseEntity.ok(response);
+}
+}
