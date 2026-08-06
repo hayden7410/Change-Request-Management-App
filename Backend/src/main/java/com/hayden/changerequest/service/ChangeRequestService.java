@@ -1,5 +1,6 @@
 package com.hayden.changerequest.service;
 
+import java.time.Instant;
 import java.util.List;
 
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -7,20 +8,28 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.access.AccessDeniedException;
 
+import com.hayden.changerequest.dto.Assignment.AssignDeveloperRequest;
 import com.hayden.changerequest.dto.ChangeRequest.CRResponse;
+import com.hayden.changerequest.dto.ChangeRequest.CRStatusHistoryResponse;
 import com.hayden.changerequest.dto.ChangeRequest.CreateCRRequest;
+import com.hayden.changerequest.dto.ChangeRequest.UpdateCRRequest;
+import com.hayden.changerequest.dto.ChangeRequest.UpdatePriorityRequest;
+
 import com.hayden.changerequest.entity.ChangeRequest;
 import com.hayden.changerequest.entity.Department;
 import com.hayden.changerequest.entity.User;
+import com.hayden.changerequest.entity.ChangeRequestStatusHistory;
+
 import com.hayden.changerequest.repository.ChangeRequestRepository;
 import com.hayden.changerequest.repository.DepartmentRepository;
 import com.hayden.changerequest.repository.UserRepository;
+import com.hayden.changerequest.repository.ChangeRequestStatusHistoryRepository;
 import com.hayden.changerequest.common.exception.ResourceNotFoundException;
 import com.hayden.changerequest.common.enums.ChangeRequestStatus;
 import com.hayden.changerequest.common.enums.CreateCRAction;
-import com.hayden.changerequest.dto.ChangeRequest.UpdateCRRequest;
+
 import com.hayden.changerequest.common.exception.InvalidRequestStateException;
-import com.hayden.changerequest.dto.ChangeRequest.UpdatePriorityRequest;
+
 
 import org.springframework.security.core.Authentication;
 
@@ -32,15 +41,18 @@ public class ChangeRequestService {
     private final ChangeRequestRepository changeRequestRepository;
     private final DepartmentRepository departmentRepository;
     private final UserRepository userRepository;
+    private final ChangeRequestStatusHistoryRepository statusHistoryRepository;
 
     public ChangeRequestService(
             ChangeRequestRepository changeRequestRepository,
             DepartmentRepository departmentRepository,
-            UserRepository userRepository) {
+            UserRepository userRepository,
+            ChangeRequestStatusHistoryRepository statusHistoryRepository) {
 
         this.changeRequestRepository = changeRequestRepository;
         this.departmentRepository = departmentRepository;
         this.userRepository = userRepository;
+        this.statusHistoryRepository = statusHistoryRepository;
     }
 
     @Transactional
@@ -115,7 +127,7 @@ public class ChangeRequestService {
     //Retrieve a change request by its ID, ensuring that the user has the appropriate permissions to view it. If the request is in draft status, only the owner can view it. If the user is not the owner and does not have the 'VIEW_ALL_REQUESTS' authority, access is denied.
     @Transactional(readOnly = true)
     @PreAuthorize(
-        "hasAnyAuthority('VIEW_SUBMITTED_REQUESTS', 'VIEW_ALL_REQUESTS')"
+        "hasAnyAuthority('VIEW_SUBMITTED_REQUESTS', 'VIEW_ALL_REQUESTS','VIEW_ASSIGNED_REQUESTS')"
 )
     public CRResponse getById(
         Long requestId,
@@ -143,7 +155,12 @@ public class ChangeRequestService {
                     authority.getAuthority()
                             .equals("VIEW_ALL_REQUESTS")
             );
-
+   boolean isAssignedDeveloper =
+        changeRequest.getAssignedDeveloper() != null
+        && changeRequest
+                .getAssignedDeveloper()
+                .getEmail()
+                .equals(currentUserEmail);
     boolean isDraft =
             changeRequest.getStatus() == ChangeRequestStatus.DRAFT;
 
@@ -153,7 +170,7 @@ public class ChangeRequestService {
         );
     }
 
-    if (!isOwner && !canViewAllRequests) {
+    if (!isOwner && !canViewAllRequests && !isAssignedDeveloper) {
         throw new AccessDeniedException(
                 "You do not have access to this change request"
         );
@@ -249,30 +266,39 @@ public class ChangeRequestService {
         @Transactional
         @PreAuthorize("hasAuthority('UPDATE_REQUEST_STATUS')")
         public CRResponse updateStatus(
-                Long id,
-                ChangeRequestStatus newStatus) {
+                Long requestId,
+                ChangeRequestStatus newStatus,
+                String changedByEmail) {
 
         ChangeRequest changeRequest = changeRequestRepository
-                .findById(id)
+                .findById(requestId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException(
                                 "Change request was not found"
                         )
                 );
 
-        ChangeRequestStatus currentStatus =
+        User changedBy = userRepository
+                .findByEmail(changedByEmail)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Authenticated user was not found"
+                        )
+                );
+
+        ChangeRequestStatus previousStatus =
                 changeRequest.getStatus();
 
-        if (currentStatus == ChangeRequestStatus.DRAFT) {
+        if (previousStatus == ChangeRequestStatus.DRAFT) {
                 throw new InvalidRequestStateException(
                         "A draft request must be submitted before its status can be updated"
                 );
         }
 
-        if (!isValidStatusTransition(currentStatus, newStatus)) {
+        if (!isValidStatusTransition(previousStatus, newStatus)) {
                 throw new InvalidRequestStateException(
                         "Cannot change status from "
-                                + currentStatus
+                                + previousStatus
                                 + " to "
                                 + newStatus
                 );
@@ -283,7 +309,158 @@ public class ChangeRequestService {
         ChangeRequest saved =
                 changeRequestRepository.save(changeRequest);
 
+        recordStatusChange(
+                saved,
+                previousStatus,
+                newStatus,
+                changedBy
+        );
+
         return toResponse(saved);
+        }
+
+//Retrieve the status change history of a specific change request. Only the owner of the request or users with "View all requests" authority can access this information.
+        @Transactional(readOnly = true)
+        @PreAuthorize(
+                "hasAnyAuthority('VIEW_SUBMITTED_REQUESTS', 'VIEW_ALL_REQUESTS','VIEW_ASSIGNED_REQUESTS')"
+        )
+        public List<CRStatusHistoryResponse> getStatusHistory(
+                Long requestId,
+                Authentication authentication) {
+
+        ChangeRequest changeRequest = changeRequestRepository
+                .findById(requestId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Change request was not found"
+                        )
+                );
+
+        String currentUserEmail = authentication.getName();
+
+        boolean isOwner = changeRequest
+                .getSubmittedBy()
+                .getEmail()
+                .equals(currentUserEmail);
+
+        boolean canViewAll = authentication
+                .getAuthorities()
+                .stream()
+                .anyMatch(authority ->
+                        authority.getAuthority()
+                                .equals("VIEW_ALL_REQUESTS")
+                );
+        boolean isAssignedDeveloper =
+        changeRequest.getAssignedDeveloper() != null
+        && changeRequest
+                .getAssignedDeveloper()
+                .getEmail()
+                .equals(currentUserEmail);
+
+        if (!isOwner && !canViewAll && !isAssignedDeveloper) {
+                throw new AccessDeniedException(
+                        "You are not authorized to view this request's history"
+                );
+        }
+
+        return statusHistoryRepository
+                .findByChangeRequest_IdOrderByChangedAtAsc(requestId)
+                .stream()
+                .map(history ->
+                        new CRStatusHistoryResponse(
+                                history.getId(),
+                                history.getPreviousStatus(),
+                                history.getNewStatus(),
+                                history.getChangedBy().getEmail(),
+                                history.getChangedAt()
+                        )
+                )
+                .toList();
+        }
+        @Transactional
+        @PreAuthorize("hasAuthority('ASSIGN_DEVELOPER_TO_REQUEST')")
+        public CRResponse assignDeveloper(
+                Long requestId,
+                AssignDeveloperRequest request,
+                Authentication authentication) {
+
+        ChangeRequest changeRequest = changeRequestRepository
+                .findById(requestId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Change request was not found"
+                        )
+                );
+
+        ChangeRequestStatus currentStatus =
+                changeRequest.getStatus();
+
+        boolean assignmentAllowed =
+                currentStatus == ChangeRequestStatus.APPROVED
+                || currentStatus
+                        == ChangeRequestStatus.IMPLEMENTATION_PENDING;
+
+        if (!assignmentAllowed) {
+                throw new InvalidRequestStateException(
+                        "A developer can only be assigned to an approved "
+                                + "or implementation-pending request"
+                );
+        }
+
+        User developer = userRepository
+                .findById(request.developerId())
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Selected developer was not found"
+                        )
+                );
+
+        boolean hasDeveloperRole = developer
+                .getRoleAssignments()
+                .stream()
+                .anyMatch(roleAssignment ->
+                        roleAssignment
+                                .getRole()
+                                .getName()
+                                .equals("DEVELOPER")
+                );
+
+        if (!hasDeveloperRole) {
+                throw new InvalidRequestStateException(
+                        "The selected user does not have the DEVELOPER role"
+                );
+        }
+
+        User assignedBy = userRepository
+                .findByEmail(authentication.getName())
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Authenticated user was not found"
+                        )
+                );
+
+        changeRequest.setAssignedDeveloper(developer);
+        changeRequest.setAssignedBy(assignedBy);
+        changeRequest.setAssignedAt(Instant.now());
+
+        ChangeRequest saved =
+                changeRequestRepository.save(changeRequest);
+
+        return toResponse(saved);
+        }
+//Retrieve all change requests assigned to the authenticated developer. Restricted to users with "View assigned requests" authority.
+        @Transactional(readOnly = true)
+        @PreAuthorize("hasAuthority('VIEW_ASSIGNED_REQUESTS')")
+        public List<CRResponse> getMyAssignedRequests(
+                String developerEmail) {
+
+        return changeRequestRepository
+                .findByAssignedDeveloper_EmailOrderByUpdatedAtDesc(
+                        developerEmail
+                )
+                .stream()
+                .map(this::toResponse)
+                .toList();
         }
 
         private boolean isValidStatusTransition(
@@ -311,7 +488,22 @@ public class ChangeRequestService {
                 case DRAFT, REJECTED, CLOSED -> false;
         };
         }
+        private void recordStatusChange(
+                ChangeRequest changeRequest,
+                ChangeRequestStatus previousStatus,
+                ChangeRequestStatus newStatus,
+                User changedBy) {
 
+        ChangeRequestStatusHistory history =
+                new ChangeRequestStatusHistory();
+
+        history.setChangeRequest(changeRequest);
+        history.setPreviousStatus(previousStatus);
+        history.setNewStatus(newStatus);
+        history.setChangedBy(changedBy);
+
+        statusHistoryRepository.save(history);
+        }
     private CRResponse toResponse(ChangeRequest changeRequest){
         return new CRResponse(
             changeRequest.getId(),
@@ -324,7 +516,19 @@ public class ChangeRequestService {
             changeRequest.getSubmittedBy().getEmail(),
             changeRequest.getAssignedDepartment().getId(),
             changeRequest.getAssignedDepartment().getName(),
-            changeRequest.getCreatedAt()
+            changeRequest.getCreatedAt(),
+            changeRequest.getAssignedDeveloper() != null
+                    ? changeRequest.getAssignedDeveloper().getId()
+                    : null,
+
+            changeRequest.getAssignedDeveloper() != null
+                    ? changeRequest.getAssignedDeveloper().getEmail()
+                    : null,
+
+            changeRequest.getAssignedBy() != null
+                    ? changeRequest.getAssignedBy().getEmail()
+                    : null,
+            changeRequest.getAssignedAt()
         );
     }
     

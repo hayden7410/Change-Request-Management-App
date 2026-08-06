@@ -15,4 +15,9 @@ public interface ChangeRequestRepository extends JpaRepository<ChangeRequest, Lo
         ChangeRequestStatus status
 );
 List<ChangeRequest> findByStatusNotOrderByCreatedAtDesc(ChangeRequestStatus status);
+List<ChangeRequest>
+        findByAssignedDeveloper_EmailOrderByUpdatedAtDesc(
+                String developerEmail
+        );
+
 }
