@@ -1,0 +1,81 @@
+.workflow-stepper {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin: 28px 0;
+}
+
+.step-wrapper {
+  display: flex;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.workflow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-width: 90px;
+
+  color: #94a3b8;
+  font-size: 12px;
+  text-align: center;
+}
+
+.step-circle {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+  border: 2px solid #cbd5e1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: white;
+
+  font-weight: 700;
+
+  margin-bottom: 8px;
+}
+
+.workflow-step.completed,
+.workflow-step.current {
+  color: #2563eb;
+}
+
+.workflow-step.completed .step-circle,
+.workflow-step.current .step-circle {
+  border-color: #2563eb;
+  background: #2563eb;
+  color: white;
+}
+
+.workflow-step.rejected {
+  color: #dc2626;
+}
+
+.workflow-step.rejected .step-circle {
+  border-color: #dc2626;
+  background: #dc2626;
+  color: white;
+}
+
+.step-line {
+  height: 2px;
+  background: #e2e8f0;
+
+  flex: 1;
+
+  margin-top: 16px;
+}
+
+.completed-line {
+  background: #2563eb;
+}
+
+.rejected-line {
+  background: #dc2626;
+}
