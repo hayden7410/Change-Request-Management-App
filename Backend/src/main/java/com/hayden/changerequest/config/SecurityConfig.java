@@ -37,6 +37,8 @@ public SecurityConfig(
             .requestMatchers("/api/health","/api/auth/login").permitAll()
             .requestMatchers("/api/admin/**").hasRole("SYSTEM_ADMIN")
             .requestMatchers("/api/change-requests/**").authenticated()
+            .requestMatchers("/api/auth/me").authenticated()
+            .requestMatchers("/api/departments/**").authenticated()
             .anyRequest().denyAll()
             )
             .exceptionHandling(exception -> exception

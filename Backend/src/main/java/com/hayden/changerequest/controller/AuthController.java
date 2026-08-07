@@ -1,14 +1,18 @@
 package com.hayden.changerequest.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.Authentication;
 
+import com.hayden.changerequest.dto.Auth.CurrentUserResponse;
 import com.hayden.changerequest.dto.Auth.LoginRequest;
 import com.hayden.changerequest.dto.Auth.LoginResponse;
 import com.hayden.changerequest.service.AuthService;
+
 
 import jakarta.validation.Valid;
 
@@ -27,6 +31,15 @@ public class AuthController {
             @Valid @RequestBody LoginRequest request) {
 
         LoginResponse response = authService.login(request);
+
+        return ResponseEntity.ok(response);
+    }
+        @GetMapping("/me")
+    public ResponseEntity<CurrentUserResponse> getCurrentUser(
+            Authentication authentication) {
+
+        CurrentUserResponse response =
+                authService.getCurrentUser(authentication);
 
         return ResponseEntity.ok(response);
     }
