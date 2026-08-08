@@ -10,5 +10,5 @@ public interface ChangeRequestStatusHistoryRepository
         extends JpaRepository<ChangeRequestStatusHistory, Long> {
 
     List<ChangeRequestStatusHistory>
-            findByChangeRequest_IdOrderByChangedAtAsc(Long changeRequestId);
+            findByChangeRequest_IdOrderByChangedAtDesc(Long changeRequestId);
 }

@@ -51,3 +51,31 @@ export function updateDraft(id, request) {
     body: JSON.stringify(request),
   });
 }
+
+export function getReviewQueue() {
+  return apiFetch("/api/change-requests/review");
+}
+
+export function updatePriority(id, priority) {
+  return apiFetch(`/api/change-requests/${id}/priority`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      priority,
+    }),
+  });
+}
+
+export function updateStatus(id, status) {
+  return apiFetch(`/api/change-requests/${id}/status`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      status,
+    }),
+  });
+}

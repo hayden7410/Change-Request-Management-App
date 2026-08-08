@@ -1,0 +1,66 @@
+.reviewer-controls {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.reviewer-controls h2 {
+  margin-top: 0;
+  font-size: 17px;
+  color: #111827;
+}
+
+.reviewer-controls-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.review-control {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.review-control label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.review-control-row {
+  display: flex;
+  gap: 10px;
+}
+
+.review-control select {
+  flex: 1;
+
+  padding: 10px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+
+  background: white;
+}
+
+.review-control button {
+  border: none;
+  border-radius: 7px;
+
+  padding: 10px 14px;
+
+  background: #2563eb;
+  color: white;
+
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.review-control button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

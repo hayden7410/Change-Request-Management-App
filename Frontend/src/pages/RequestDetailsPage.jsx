@@ -11,6 +11,7 @@ import {
 
 import StatusBadge from "../components/StatusBadge";
 import WorkflowStepper from "../components/WorkflowStepper";
+import ReviewerControls from "../components/ReviewerControls";
 
 import "./RequestDetailsPage.css";
 
@@ -167,6 +168,13 @@ function RequestDetailsPage() {
 
         </div>
       )}
+      <ReviewerControls
+        request={request}
+        user={user}
+        onRequestUpdated={(updatedRequest) =>
+          setRequest(updatedRequest)
+        }
+      />
 
       {/* Main Request Information */}
       <div className="details-grid">

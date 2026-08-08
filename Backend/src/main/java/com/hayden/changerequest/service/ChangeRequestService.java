@@ -364,7 +364,7 @@ public class ChangeRequestService {
         }
 
         return statusHistoryRepository
-                .findByChangeRequest_IdOrderByChangedAtAsc(requestId)
+                .findByChangeRequest_IdOrderByChangedAtDesc(requestId)
                 .stream()
                 .map(history ->
                         new CRStatusHistoryResponse(

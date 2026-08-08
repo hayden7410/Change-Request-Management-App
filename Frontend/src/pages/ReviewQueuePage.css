@@ -1,0 +1,43 @@
+.review-queue-page {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.review-table-container {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.review-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.review-table th,
+.review-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.review-table th {
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.review-table td {
+  color: #334155;
+  font-size: 14px;
+}
+
+.review-table tbody tr {
+  cursor: pointer;
+}
+
+.review-table tbody tr:hover {
+  background: #f8fafc;
+}

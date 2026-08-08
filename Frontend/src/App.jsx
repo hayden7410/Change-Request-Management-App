@@ -9,6 +9,7 @@ import MyRequestsPage from "./pages/MyRequestsPage";
 import RequestDetailsPage from "./pages/RequestDetailsPage";
 import CreateRequestPage from "./pages/CreateRequestPage";
 import EditRequestPage from "./pages/EditRequestPage";
+import ReviewQueuePage from "./pages/ReviewQueuePage";
 
 function App() {
   return (
@@ -45,7 +46,10 @@ function App() {
           path="/change-requests/:id"
           element={<RequestDetailsPage />}
         />
-        
+        <Route
+          path="/review"
+          element={<ReviewQueuePage />}
+        />
       </Route>
       
     </Routes>
